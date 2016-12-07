@@ -1,11 +1,11 @@
 ﻿Public Class Deck
 
-    Private _cards As New ArrayList
+    Private _cards As List(Of Card) = New List(Of Card)
     Private _index As Integer
 
     Public Sub New()
 
-        'Nombre de carte total
+        'Nombre de carte total - 1 starting at 0
         _index = 51
 
         'Définition des cartes

@@ -3,19 +3,20 @@ Option Explicit On
 
 Public Class frmMain
 
+
     ''' <summary>
-    ''' Required by DragDrop operation
+    ''' Required by DragDrop
     ''' </summary>
-    ''' <param name="handle"></param>
-    ''' <returns></returns>
     <System.Runtime.InteropServices.DllImport("user32.dll")>
     Private Shared Function DestroyIcon(handle As IntPtr) As Boolean
     End Function
 
+
     ''' <summary>
-    ''' Game Chronometer
+    ''' Game timer
     ''' </summary>
-    Private gameChrono As Single
+    Private timer As Single
+
 
     ''' <summary>
     ''' Deck of card for this game
@@ -23,12 +24,40 @@ Public Class frmMain
     Private deck As Deck = New Deck()
 
 
+    ''' <summary>
+    ''' Store current game
+    ''' </summary>
+    Private game As Game
+
+
+    ''' <summary>
+    ''' Store original target card size
+    ''' </summary>
+    Private originalTargetWidth As Integer
+    Private originalTargetHeight As Integer
+
+
+    ''' <summary>
+    ''' Store value indicating if row of card is complete
+    ''' </summary>
+    Private Row1Full As Boolean = False
+    Private Row2Full As Boolean = False
+    Private Row3Full As Boolean = False
+    Private Row4Full As Boolean = False
+
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        'Accept drop on current form
+        AllowDrop = True
+
+        'Create new game
+        game = New Game()
+
+        'Start Timer
         GameTimer.Enabled = True
         GameTimer.Interval = 1000
 
-        'Display initial card 
+        'Initialize game table 
         Dim card As Control
         For Each card In Controls
             If TypeOf card Is PictureBox Then
@@ -53,15 +82,15 @@ Public Class frmMain
     Private Sub GameTimer_Tick(sender As Object, e As EventArgs) Handles GameTimer.Tick
 
         'Affichage du temps de la partie
-        gameChrono += 1
-        If gameChrono >= 3600 Then
-            Dim SecondeRestante As Single = gameChrono Mod 3600
-            lblGameTimer.Text = "Temps : " & Int(gameChrono / 3600) & " Heures " & Int(SecondeRestante / 60) & " Minutes " & SecondeRestante Mod 60 & " Secondes"
+        timer += 1
+        If timer >= 3600 Then
+            Dim SecondeRestante As Single = timer Mod 3600
+            lblGameTimer.Text = "Temps : " & Int(timer / 3600) & " Heures " & Int(SecondeRestante / 60) & " Minutes " & SecondeRestante Mod 60 & " Secondes"
         Else
-            If gameChrono >= 60 Then
-                lblGameTimer.Text = "Temps : " & Int(gameChrono / 60) & " Minutes " & gameChrono Mod 60 & " Secondes"
+            If timer >= 60 Then
+                lblGameTimer.Text = "Temps : " & Int(timer / 60) & " Minutes " & timer Mod 60 & " Secondes"
             Else
-                lblGameTimer.Text = "Temps : " & gameChrono & " Secondes"
+                lblGameTimer.Text = "Temps : " & timer & " Secondes"
             End If
         End If
 
@@ -70,11 +99,11 @@ Public Class frmMain
 
 
     Private Sub NouvellePartieToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NouvellePartieToolStripMenuItem.Click
-        gameChrono = -1
+        timer = -1
     End Sub
 
 
-    Private Sub imgCard_MouseDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles imgCard.MouseDown
+    Private Sub Source_MouseDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles imgCard.MouseDown
         If e.Button = MouseButtons.Left Then
             Dim dragImage = DirectCast(imgCard.Image, Bitmap)
             Dim cur = New Bitmap(dragImage, New Size(imgCard.Width, imgCard.Height))
@@ -90,7 +119,7 @@ Public Class frmMain
     End Sub
 
     ' Allow a copy of an image.
-    Private Sub picDropTarget_DragEnter(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DragEventArgs) Handles _
+    Private Sub Target_DragEnter(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DragEventArgs) Handles _
         card1.DragEnter, card2.DragEnter, card3.DragEnter, card4.DragEnter,
         card5.DragEnter, card6.DragEnter, card7.DragEnter, card8.DragEnter,
         card9.DragEnter, card10.DragEnter, card11.DragEnter, card12.DragEnter,
@@ -102,10 +131,29 @@ Public Class frmMain
         Else
             e.Effect = DragDropEffects.None
         End If
+
+        'Small oversize effect on mouse over
+        Dim target As PictureBox = DirectCast(sender, PictureBox)
+        originalTargetWidth = target.Width
+        originalTargetHeight = target.Height
+        Dim newWidth As Integer = target.Width + CInt(5 * target.Width / 100)
+        Dim newHeight As Integer = target.Height + CInt(5 * target.Height / 100)
+        target.Size() = New Size(newWidth, newHeight)
+    End Sub
+
+    Private Sub Target_DragLeave(sender As Object, e As EventArgs) Handles _
+        card9.DragLeave, card8.DragLeave, card7.DragLeave, card6.DragLeave,
+        card5.DragLeave, card4.DragLeave, card3.DragLeave, card2.DragLeave,
+        card16.DragLeave, card15.DragLeave, card14.DragLeave, card13.DragLeave,
+        card12.DragLeave, card11.DragLeave, card10.DragLeave, card1.DragLeave
+
+        'Recover original size after mouse leave
+        Dim target As PictureBox = DirectCast(sender, PictureBox)
+        target.Size() = New Size(originalTargetWidth, originalTargetHeight)
     End Sub
 
     ' Accept the drop.
-    Private Sub picDropTarget_DragDrop(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DragEventArgs) Handles _
+    Private Sub Target_DragDrop(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DragEventArgs) Handles _
         card1.DragDrop, card2.DragDrop, card3.DragDrop, card4.DragDrop,
         card5.DragDrop, card6.DragDrop, card7.DragDrop, card8.DragDrop,
         card9.DragDrop, card10.DragDrop, card11.DragDrop, card12.DragDrop,
@@ -118,44 +166,103 @@ Public Class frmMain
         picBox.Tag = 1
         picBox.AllowDrop = False
 
+        'Recover original size after mouse leave
+        Dim target As PictureBox = DirectCast(sender, PictureBox)
+        target.Size() = New Size(originalTargetWidth, originalTargetHeight)
 
         'show second row
         If CInt(card1.Tag) = 1 AndAlso
             CInt(card2.Tag) = 1 AndAlso
             CInt(card3.Tag) = 1 AndAlso
-            CInt(card4.Tag) = 1 Then
+            CInt(card4.Tag) = 1 AndAlso
+            Row1Full = False Then
 
             card5.Visible = True
             card6.Visible = True
             card7.Visible = True
             card8.Visible = True
+
+            'Add first card to crib
+            game.StoreCardInHand(0, deck.newCard())
+            cribCard1.Visible = True
+
+            'Prevent new card to be added to the crib
+            Row1Full = True
         End If
 
         'show third row
         If CInt(card5.Tag) = 1 AndAlso
             CInt(card6.Tag) = 1 AndAlso
             CInt(card7.Tag) = 1 AndAlso
-            CInt(card8.Tag) = 1 Then
+            CInt(card8.Tag) = 1 AndAlso
+            Row2Full = False Then
+
             card9.Visible = True
             card10.Visible = True
             card11.Visible = True
             card12.Visible = True
+
+            'Add second card to crib
+            game.StoreCardInHand(0, deck.newCard())
+            cribCard2.Visible = True
+
+            'Prevent new card to be added to the crib
+            Row2Full = True
         End If
 
         'show last row
         If CInt(card9.Tag) = 1 AndAlso
             CInt(card10.Tag) = 1 AndAlso
             CInt(card11.Tag) = 1 AndAlso
-            CInt(card12.Tag) = 1 Then
+            CInt(card12.Tag) = 1 AndAlso
+            Row3Full = False Then
+
             card13.Visible = True
             card14.Visible = True
             card15.Visible = True
             card16.Visible = True
+
+            'Add third card to crib
+            game.StoreCardInHand(0, deck.newCard())
+            cribCard3.Visible = True
+
+            'Prevent new card to be added to the crib
+            Row3Full = True
         End If
 
-        'rand new card
-        Dim CurrentCard As Card = deck.newCard()
-        imgCard.Image = CurrentCard.getImage()
+        'Add last card to crib
+        If CInt(card13.Tag) = 1 AndAlso
+            CInt(card14.Tag) = 1 AndAlso
+            CInt(card15.Tag) = 1 AndAlso
+            CInt(card16.Tag) = 1 AndAlso
+            Row4Full = False Then
+
+            'Add last card to crib
+            game.StoreCardInHand(0, deck.newCard())
+            cribCard4.Visible = True
+
+            'Prevent new card to be added to the crib
+            Row4Full = True
+
+            'Display crib card
+            Dim cribHand As List(Of Card) = game.getHand(0)
+            cribCard1.Image = cribHand(0).getImage()
+            cribCard2.Image = cribHand(1).getImage()
+            cribCard3.Image = cribHand(2).getImage()
+            cribCard4.Image = cribHand(3).getImage()
+
+            'Put source card on deck like if someone cut the deck
+            imgDeck.Image = deck.newCard.getImage()
+            imgCard.Visible = False
+
+
+        End If
+
+        'Rand new source card if all row not full
+        If Row4Full <> True Then
+            imgCard.Image = deck.newCard().getImage()
+        End If
+
 
     End Sub
 

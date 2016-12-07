@@ -54,6 +54,10 @@ Partial Class frmMain
         Me.card2 = New System.Windows.Forms.PictureBox()
         Me.card1 = New System.Windows.Forms.PictureBox()
         Me.imgDeck = New System.Windows.Forms.PictureBox()
+        Me.cribCard4 = New System.Windows.Forms.PictureBox()
+        Me.cribCard3 = New System.Windows.Forms.PictureBox()
+        Me.cribCard2 = New System.Windows.Forms.PictureBox()
+        Me.cribCard1 = New System.Windows.Forms.PictureBox()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.card16, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -74,6 +78,10 @@ Partial Class frmMain
         CType(Me.card2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.card1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imgDeck, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cribCard4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cribCard3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cribCard2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.cribCard1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'StatusStrip1
@@ -372,6 +380,54 @@ Partial Class frmMain
         Me.imgDeck.TabIndex = 2
         Me.imgDeck.TabStop = False
         '
+        'cribCard4
+        '
+        Me.cribCard4.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.cribCard4.BackColor = System.Drawing.Color.Black
+        Me.cribCard4.Image = CType(resources.GetObject("cribCard4.Image"), System.Drawing.Image)
+        Me.cribCard4.Location = New System.Drawing.Point(23, 436)
+        Me.cribCard4.Name = "cribCard4"
+        Me.cribCard4.Size = New System.Drawing.Size(124, 170)
+        Me.cribCard4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.cribCard4.TabIndex = 23
+        Me.cribCard4.TabStop = False
+        '
+        'cribCard3
+        '
+        Me.cribCard3.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.cribCard3.BackColor = System.Drawing.Color.Black
+        Me.cribCard3.Image = CType(resources.GetObject("cribCard3.Image"), System.Drawing.Image)
+        Me.cribCard3.Location = New System.Drawing.Point(23, 404)
+        Me.cribCard3.Name = "cribCard3"
+        Me.cribCard3.Size = New System.Drawing.Size(124, 170)
+        Me.cribCard3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.cribCard3.TabIndex = 22
+        Me.cribCard3.TabStop = False
+        '
+        'cribCard2
+        '
+        Me.cribCard2.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.cribCard2.BackColor = System.Drawing.Color.Black
+        Me.cribCard2.Image = CType(resources.GetObject("cribCard2.Image"), System.Drawing.Image)
+        Me.cribCard2.Location = New System.Drawing.Point(23, 370)
+        Me.cribCard2.Name = "cribCard2"
+        Me.cribCard2.Size = New System.Drawing.Size(124, 170)
+        Me.cribCard2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.cribCard2.TabIndex = 21
+        Me.cribCard2.TabStop = False
+        '
+        'cribCard1
+        '
+        Me.cribCard1.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.cribCard1.BackColor = System.Drawing.Color.Black
+        Me.cribCard1.Image = CType(resources.GetObject("cribCard1.Image"), System.Drawing.Image)
+        Me.cribCard1.Location = New System.Drawing.Point(23, 338)
+        Me.cribCard1.Name = "cribCard1"
+        Me.cribCard1.Size = New System.Drawing.Size(124, 170)
+        Me.cribCard1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.cribCard1.TabIndex = 20
+        Me.cribCard1.TabStop = False
+        '
         'frmMain
         '
         Me.AllowDrop = True
@@ -379,6 +435,10 @@ Partial Class frmMain
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.DarkGreen
         Me.ClientSize = New System.Drawing.Size(968, 643)
+        Me.Controls.Add(Me.cribCard4)
+        Me.Controls.Add(Me.cribCard3)
+        Me.Controls.Add(Me.cribCard2)
+        Me.Controls.Add(Me.cribCard1)
         Me.Controls.Add(Me.card16)
         Me.Controls.Add(Me.card15)
         Me.Controls.Add(Me.card14)
@@ -426,6 +486,10 @@ Partial Class frmMain
         CType(Me.card2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.card1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.imgDeck, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cribCard4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cribCard3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cribCard2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.cribCard1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -460,5 +524,8 @@ Partial Class frmMain
     Friend WithEvents card15 As System.Windows.Forms.PictureBox
     Friend WithEvents card14 As System.Windows.Forms.PictureBox
     Friend WithEvents card13 As System.Windows.Forms.PictureBox
-
+    Friend WithEvents cribCard4 As PictureBox
+    Friend WithEvents cribCard3 As PictureBox
+    Friend WithEvents cribCard2 As PictureBox
+    Friend WithEvents cribCard1 As PictureBox
 End Class
