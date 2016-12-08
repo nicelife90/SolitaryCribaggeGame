@@ -51,6 +51,17 @@ Public Class frmMain
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+
+
+        imgPinRed1.BackColor = Color.Transparent
+        imgPinRed1.Parent = imgBoard
+        imgPinRed1.Location = New Point(586, 108)
+
+        imgPinRed2.BackColor = Color.Transparent
+        imgPinRed2.Parent = imgBoard
+        imgPinRed2.Location = New Point(600, 108)
+
+
         'Accept drop on current form
         AllowDrop = True
 

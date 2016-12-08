@@ -440,6 +440,7 @@ Partial Class frmMain
         '
         'imgBoard
         '
+        Me.imgBoard.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.imgBoard.BackColor = System.Drawing.Color.Transparent
         Me.imgBoard.Image = Global.Cribe_Chinois.My.Resources.Resources.scoreboard
         Me.imgBoard.Location = New System.Drawing.Point(303, 43)
@@ -453,7 +454,7 @@ Partial Class frmMain
         '
         Me.imgPinBlue1.BackColor = System.Drawing.Color.Transparent
         Me.imgPinBlue1.Image = Global.Cribe_Chinois.My.Resources.Resources.pin1
-        Me.imgPinBlue1.Location = New System.Drawing.Point(841, 237)
+        Me.imgPinBlue1.Location = New System.Drawing.Point(812, 151)
         Me.imgPinBlue1.Name = "imgPinBlue1"
         Me.imgPinBlue1.Size = New System.Drawing.Size(15, 40)
         Me.imgPinBlue1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -475,18 +476,19 @@ Partial Class frmMain
         '
         Me.imgPinRed1.BackColor = System.Drawing.Color.Transparent
         Me.imgPinRed1.Image = Global.Cribe_Chinois.My.Resources.Resources.pin2
-        Me.imgPinRed1.Location = New System.Drawing.Point(904, 237)
+        Me.imgPinRed1.Location = New System.Drawing.Point(902, 151)
         Me.imgPinRed1.Name = "imgPinRed1"
         Me.imgPinRed1.Size = New System.Drawing.Size(15, 40)
         Me.imgPinRed1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
         Me.imgPinRed1.TabIndex = 27
         Me.imgPinRed1.TabStop = False
+        Me.imgPinRed1.Parent = imgBoard
         '
         'imgPinRed2
         '
         Me.imgPinRed2.BackColor = System.Drawing.Color.Transparent
         Me.imgPinRed2.Image = Global.Cribe_Chinois.My.Resources.Resources.pin2
-        Me.imgPinRed2.Location = New System.Drawing.Point(883, 237)
+        Me.imgPinRed2.Location = New System.Drawing.Point(890, 151)
         Me.imgPinRed2.Name = "imgPinRed2"
         Me.imgPinRed2.Size = New System.Drawing.Size(15, 40)
         Me.imgPinRed2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
@@ -500,8 +502,8 @@ Partial Class frmMain
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.DarkGreen
         Me.ClientSize = New System.Drawing.Size(968, 643)
-        Me.Controls.Add(Me.imgPinRed2)
         Me.Controls.Add(Me.imgPinRed1)
+        Me.Controls.Add(Me.imgPinRed2)
         Me.Controls.Add(Me.imgPinBlue2)
         Me.Controls.Add(Me.imgPinBlue1)
         Me.Controls.Add(Me.imgBoard)
