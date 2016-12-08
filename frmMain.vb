@@ -17,6 +17,10 @@ Public Class frmMain
     ''' </summary>
     Private timer As Single
 
+    ''' <summary>
+    ''' Current card to play
+    ''' </summary>
+    Dim currentCard As Card
 
     ''' <summary>
     ''' Deck of card for this game
@@ -64,7 +68,11 @@ Public Class frmMain
                 card.AllowDrop = True
                 card.Visible = False
 
-                Dim cardsToShow As String() = {"card1", "card2", "card3", "card4", "imgDeck", "imgCard"}
+                Dim cardsToShow As String() = {
+                    "card1", "card2", "card3", "card4",
+                    "imgDeck", "imgCard", "imgBoard",
+                    "imgPinBlue1", "imgPinBlue2", "imgPinRed1", "imgPinRed2"}
+
                 For Each c In cardsToShow
                     If card.Name = c Then
                         card.Visible = True
@@ -75,8 +83,8 @@ Public Class frmMain
         Next
 
         'Pick new card from deck
-        Dim CurrentCard As Card = deck.newCard()
-        imgCard.Image = CurrentCard.getImage()
+        currentCard = deck.newCard()
+        imgCard.Image = currentCard.getImage()
     End Sub
 
     Private Sub GameTimer_Tick(sender As Object, e As EventArgs) Handles GameTimer.Tick
@@ -166,9 +174,27 @@ Public Class frmMain
         picBox.Tag = 1
         picBox.AllowDrop = False
 
+
         'Recover original size after mouse leave
         Dim target As PictureBox = DirectCast(sender, PictureBox)
         target.Size() = New Size(originalTargetWidth, originalTargetHeight)
+
+        'Add card to right hand
+        Select Case picBox.Name
+
+            Case "card1", "card5", "card9", "card13"
+                game.StoreCardInHand(1, currentCard)
+
+            Case "card2", "card6", "card10", "card14"
+                game.StoreCardInHand(2, currentCard)
+
+            Case "card3", "card7", "card11", "card15"
+                game.StoreCardInHand(3, currentCard)
+
+            Case "card4", "card8", "card12", "card16"
+                game.StoreCardInHand(4, currentCard)
+
+        End Select
 
         'show second row
         If CInt(card1.Tag) = 1 AndAlso
@@ -260,7 +286,8 @@ Public Class frmMain
 
         'Rand new source card if all row not full
         If Row4Full <> True Then
-            imgCard.Image = deck.newCard().getImage()
+            currentCard = deck.newCard()
+            imgCard.Image = currentCard.getImage()
         End If
 
 

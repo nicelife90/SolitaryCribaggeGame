@@ -122,6 +122,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icone.ico" />
+    <None Include="Resources\scoreboard.png" />
+    <None Include="Resources\pin2.png" />
+    <None Include="Resources\pin1.png" />
+    <None Include="PSD\scoreboard.png" />
+    <None Include="PSD\pin2.png" />
+    <None Include="PSD\pin1.png" />
     <None Include="Resources\background.png" />
     <EmbeddedResource Include="Resources\Dos\CB01.png" />
     <EmbeddedResource Include="Resources\Dos\CB02.png" />
