@@ -27,6 +27,10 @@ Public Class frmMain
     ''' </summary>
     Private deck As Deck = New Deck()
 
+    ''' <summary>
+    ''' All method require to move pegs on gameboard
+    ''' </summary>
+    Private pegs As Pegs = New Pegs()
 
     ''' <summary>
     ''' Store current game
@@ -51,15 +55,21 @@ Public Class frmMain
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-
-
         imgPinRed1.BackColor = Color.Transparent
         imgPinRed1.Parent = imgBoard
-        imgPinRed1.Location = New Point(586, 108)
+        imgPinRed1.Location = pegs.getPegsPointByPosition(90, 0)
 
         imgPinRed2.BackColor = Color.Transparent
         imgPinRed2.Parent = imgBoard
-        imgPinRed2.Location = New Point(600, 108)
+        imgPinRed2.Location = pegs.getPegsPointByPosition(89, 0)
+
+        imgPinBlue1.BackColor = Color.Transparent
+        imgPinBlue1.Parent = imgBoard
+        imgPinBlue1.Location = pegs.getPegsPointByPosition(35, 1)
+
+        imgPinBlue2.BackColor = Color.Transparent
+        imgPinBlue2.Parent = imgBoard
+        imgPinBlue2.Location = pegs.getPegsPointByPosition(-2, 1)
 
 
         'Accept drop on current form
@@ -304,4 +314,15 @@ Public Class frmMain
 
     End Sub
 
+
+    Private p As Integer = 35
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        p += 1
+        imgPinBlue1.Location = pegs.getPegsPointByPosition(p, 1)
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        p -= 1
+        imgPinBlue1.Location = pegs.getPegsPointByPosition(p, 1)
+    End Sub
 End Class

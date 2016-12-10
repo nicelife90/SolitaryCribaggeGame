@@ -36,6 +36,11 @@ Partial Class frmMain
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.QuiterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GameTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.imgPinRed1 = New System.Windows.Forms.PictureBox()
+        Me.imgPinRed2 = New System.Windows.Forms.PictureBox()
+        Me.imgPinBlue1 = New System.Windows.Forms.PictureBox()
+        Me.imgPinBlue2 = New System.Windows.Forms.PictureBox()
+        Me.imgBoard = New System.Windows.Forms.PictureBox()
         Me.cribCard4 = New System.Windows.Forms.PictureBox()
         Me.cribCard3 = New System.Windows.Forms.PictureBox()
         Me.cribCard2 = New System.Windows.Forms.PictureBox()
@@ -58,13 +63,15 @@ Partial Class frmMain
         Me.card2 = New System.Windows.Forms.PictureBox()
         Me.card1 = New System.Windows.Forms.PictureBox()
         Me.imgDeck = New System.Windows.Forms.PictureBox()
-        Me.imgBoard = New System.Windows.Forms.PictureBox()
-        Me.imgPinBlue1 = New System.Windows.Forms.PictureBox()
-        Me.imgPinBlue2 = New System.Windows.Forms.PictureBox()
-        Me.imgPinRed1 = New System.Windows.Forms.PictureBox()
-        Me.imgPinRed2 = New System.Windows.Forms.PictureBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
+        CType(Me.imgPinRed1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.imgPinRed2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.imgPinBlue1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.imgPinBlue2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.imgBoard, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cribCard4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cribCard3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cribCard2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -87,11 +94,6 @@ Partial Class frmMain
         CType(Me.card2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.card1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.imgDeck, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.imgBoard, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.imgPinBlue1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.imgPinBlue2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.imgPinRed1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.imgPinRed2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'StatusStrip1
@@ -173,6 +175,68 @@ Partial Class frmMain
         '
         'GameTimer
         '
+        '
+        'imgPinRed1
+        '
+        Me.imgPinRed1.Image = CType(resources.GetObject("imgPinRed1.Image"), System.Drawing.Image)
+        Me.imgPinRed1.Location = New System.Drawing.Point(898, 370)
+        Me.imgPinRed1.MaximumSize = New System.Drawing.Size(11, 40)
+        Me.imgPinRed1.MinimumSize = New System.Drawing.Size(11, 40)
+        Me.imgPinRed1.Name = "imgPinRed1"
+        Me.imgPinRed1.Size = New System.Drawing.Size(11, 40)
+        Me.imgPinRed1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.imgPinRed1.TabIndex = 28
+        Me.imgPinRed1.TabStop = False
+        '
+        'imgPinRed2
+        '
+        Me.imgPinRed2.Image = CType(resources.GetObject("imgPinRed2.Image"), System.Drawing.Image)
+        Me.imgPinRed2.Location = New System.Drawing.Point(881, 370)
+        Me.imgPinRed2.MaximumSize = New System.Drawing.Size(11, 40)
+        Me.imgPinRed2.MinimumSize = New System.Drawing.Size(11, 40)
+        Me.imgPinRed2.Name = "imgPinRed2"
+        Me.imgPinRed2.Size = New System.Drawing.Size(11, 40)
+        Me.imgPinRed2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.imgPinRed2.TabIndex = 27
+        Me.imgPinRed2.TabStop = False
+        '
+        'imgPinBlue1
+        '
+        Me.imgPinBlue1.Image = CType(resources.GetObject("imgPinBlue1.Image"), System.Drawing.Image)
+        Me.imgPinBlue1.Location = New System.Drawing.Point(932, 370)
+        Me.imgPinBlue1.MaximumSize = New System.Drawing.Size(11, 40)
+        Me.imgPinBlue1.MinimumSize = New System.Drawing.Size(11, 40)
+        Me.imgPinBlue1.Name = "imgPinBlue1"
+        Me.imgPinBlue1.Size = New System.Drawing.Size(11, 40)
+        Me.imgPinBlue1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.imgPinBlue1.TabIndex = 26
+        Me.imgPinBlue1.TabStop = False
+        '
+        'imgPinBlue2
+        '
+        Me.imgPinBlue2.Image = CType(resources.GetObject("imgPinBlue2.Image"), System.Drawing.Image)
+        Me.imgPinBlue2.Location = New System.Drawing.Point(915, 370)
+        Me.imgPinBlue2.MaximumSize = New System.Drawing.Size(11, 40)
+        Me.imgPinBlue2.MinimumSize = New System.Drawing.Size(11, 40)
+        Me.imgPinBlue2.Name = "imgPinBlue2"
+        Me.imgPinBlue2.Size = New System.Drawing.Size(11, 40)
+        Me.imgPinBlue2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.imgPinBlue2.TabIndex = 25
+        Me.imgPinBlue2.TabStop = False
+        '
+        'imgBoard
+        '
+        Me.imgBoard.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.imgBoard.BackColor = System.Drawing.Color.Transparent
+        Me.imgBoard.Image = Global.Cribe_Chinois.My.Resources.Resources.scoreboard
+        Me.imgBoard.Location = New System.Drawing.Point(301, 28)
+        Me.imgBoard.MaximumSize = New System.Drawing.Size(642, 230)
+        Me.imgBoard.MinimumSize = New System.Drawing.Size(642, 230)
+        Me.imgBoard.Name = "imgBoard"
+        Me.imgBoard.Size = New System.Drawing.Size(642, 230)
+        Me.imgBoard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.imgBoard.TabIndex = 24
+        Me.imgBoard.TabStop = False
         '
         'cribCard4
         '
@@ -371,7 +435,7 @@ Partial Class frmMain
         Me.imgCard.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.imgCard.BackColor = System.Drawing.Color.Black
         Me.imgCard.Image = Global.Cribe_Chinois.My.Resources.Resources.background
-        Me.imgCard.Location = New System.Drawing.Point(160, 43)
+        Me.imgCard.Location = New System.Drawing.Point(160, 52)
         Me.imgCard.Name = "imgCard"
         Me.imgCard.Size = New System.Drawing.Size(124, 170)
         Me.imgCard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -431,69 +495,30 @@ Partial Class frmMain
         Me.imgDeck.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.imgDeck.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.imgDeck.Image = Global.Cribe_Chinois.My.Resources.Resources.CB04
-        Me.imgDeck.Location = New System.Drawing.Point(23, 43)
+        Me.imgDeck.Location = New System.Drawing.Point(23, 52)
         Me.imgDeck.Name = "imgDeck"
         Me.imgDeck.Size = New System.Drawing.Size(124, 170)
         Me.imgDeck.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.imgDeck.TabIndex = 2
         Me.imgDeck.TabStop = False
         '
-        'imgBoard
+        'Button1
         '
-        Me.imgBoard.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.imgBoard.BackColor = System.Drawing.Color.Transparent
-        Me.imgBoard.Image = Global.Cribe_Chinois.My.Resources.Resources.scoreboard
-        Me.imgBoard.Location = New System.Drawing.Point(303, 43)
-        Me.imgBoard.Name = "imgBoard"
-        Me.imgBoard.Size = New System.Drawing.Size(642, 188)
-        Me.imgBoard.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
-        Me.imgBoard.TabIndex = 24
-        Me.imgBoard.TabStop = False
+        Me.Button1.Location = New System.Drawing.Point(23, 268)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 29
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
         '
-        'imgPinBlue1
+        'Button2
         '
-        Me.imgPinBlue1.BackColor = System.Drawing.Color.Transparent
-        Me.imgPinBlue1.Image = Global.Cribe_Chinois.My.Resources.Resources.pin1
-        Me.imgPinBlue1.Location = New System.Drawing.Point(812, 151)
-        Me.imgPinBlue1.Name = "imgPinBlue1"
-        Me.imgPinBlue1.Size = New System.Drawing.Size(15, 40)
-        Me.imgPinBlue1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
-        Me.imgPinBlue1.TabIndex = 25
-        Me.imgPinBlue1.TabStop = False
-        '
-        'imgPinBlue2
-        '
-        Me.imgPinBlue2.BackColor = System.Drawing.Color.Transparent
-        Me.imgPinBlue2.Image = CType(resources.GetObject("imgPinBlue2.Image"), System.Drawing.Image)
-        Me.imgPinBlue2.Location = New System.Drawing.Point(862, 237)
-        Me.imgPinBlue2.Name = "imgPinBlue2"
-        Me.imgPinBlue2.Size = New System.Drawing.Size(15, 40)
-        Me.imgPinBlue2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
-        Me.imgPinBlue2.TabIndex = 26
-        Me.imgPinBlue2.TabStop = False
-        '
-        'imgPinRed1
-        '
-        Me.imgPinRed1.BackColor = System.Drawing.Color.Transparent
-        Me.imgPinRed1.Image = Global.Cribe_Chinois.My.Resources.Resources.pin2
-        Me.imgPinRed1.Location = New System.Drawing.Point(902, 151)
-        Me.imgPinRed1.Name = "imgPinRed1"
-        Me.imgPinRed1.Size = New System.Drawing.Size(15, 40)
-        Me.imgPinRed1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
-        Me.imgPinRed1.TabIndex = 27
-        Me.imgPinRed1.TabStop = False
-        Me.imgPinRed1.Parent = imgBoard
-        '
-        'imgPinRed2
-        '
-        Me.imgPinRed2.BackColor = System.Drawing.Color.Transparent
-        Me.imgPinRed2.Image = Global.Cribe_Chinois.My.Resources.Resources.pin2
-        Me.imgPinRed2.Location = New System.Drawing.Point(890, 151)
-        Me.imgPinRed2.Name = "imgPinRed2"
-        Me.imgPinRed2.Size = New System.Drawing.Size(15, 40)
-        Me.imgPinRed2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
-        Me.imgPinRed2.TabIndex = 28
-        Me.imgPinRed2.TabStop = False
+        Me.Button2.Location = New System.Drawing.Point(114, 268)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 30
+        Me.Button2.Text = "Button2"
+        Me.Button2.UseVisualStyleBackColor = True
         '
         'frmMain
         '
@@ -502,10 +527,12 @@ Partial Class frmMain
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.DarkGreen
         Me.ClientSize = New System.Drawing.Size(968, 643)
+        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.imgPinRed1)
         Me.Controls.Add(Me.imgPinRed2)
-        Me.Controls.Add(Me.imgPinBlue2)
         Me.Controls.Add(Me.imgPinBlue1)
+        Me.Controls.Add(Me.imgPinBlue2)
         Me.Controls.Add(Me.imgBoard)
         Me.Controls.Add(Me.cribCard4)
         Me.Controls.Add(Me.cribCard3)
@@ -540,6 +567,11 @@ Partial Class frmMain
         Me.StatusStrip1.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
+        CType(Me.imgPinRed1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.imgPinRed2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.imgPinBlue1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.imgPinBlue2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.imgBoard, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cribCard4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cribCard3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cribCard2, System.ComponentModel.ISupportInitialize).EndInit()
@@ -562,11 +594,6 @@ Partial Class frmMain
         CType(Me.card2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.card1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.imgDeck, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.imgBoard, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.imgPinBlue1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.imgPinBlue2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.imgPinRed1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.imgPinRed2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -606,8 +633,10 @@ Partial Class frmMain
     Friend WithEvents cribCard2 As PictureBox
     Friend WithEvents cribCard1 As PictureBox
     Friend WithEvents imgBoard As PictureBox
-    Friend WithEvents imgPinBlue1 As PictureBox
     Friend WithEvents imgPinBlue2 As PictureBox
-    Friend WithEvents imgPinRed1 As PictureBox
+    Friend WithEvents imgPinBlue1 As PictureBox
     Friend WithEvents imgPinRed2 As PictureBox
+    Friend WithEvents imgPinRed1 As PictureBox
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
 End Class
